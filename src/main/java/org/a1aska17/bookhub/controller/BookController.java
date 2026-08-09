@@ -1,11 +1,11 @@
 package org.a1aska17.bookhub.controller;
 
 import org.a1aska17.bookhub.dto.BookResponse;
+import org.a1aska17.bookhub.entity.Book;
 import org.a1aska17.bookhub.service.BookService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -16,8 +16,18 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/addbook")
-    public void addBook(@RequestBody BookResponse bookResponse) {
-        bookService.addBook(bookResponse);
+    @PostMapping("/addbook")
+    public Book addBook(@RequestBody BookResponse bookResponse) {
+       return bookService.addBook(bookResponse);
+    }
+
+    @GetMapping("/infobook")
+    public Book infoBook(@RequestBody BookResponse bookResponse) {
+        return bookService.infoBookById(bookResponse);
+    }
+
+    @GetMapping("/listbooks")
+    public List<Book> printListBooks() {
+        return bookService.printListBooks();
     }
 }

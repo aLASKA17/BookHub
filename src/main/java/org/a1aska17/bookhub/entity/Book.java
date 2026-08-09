@@ -4,8 +4,7 @@ package org.a1aska17.bookhub.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -20,18 +19,18 @@ public class Book {
     private String authorBook;
     private String descriptionBook;
     private int publicationYearBook;
-    private LocalDate createdAtBook;
+    private LocalDateTime createdAtBook;
     private boolean isRead;
-    private LocalDate updateAtBook;
+    private LocalDateTime updateAtBook;
 
     @PrePersist
     public void addBook() {
-        this.createdAtBook = LocalDate.now();
-        this.updateAtBook = LocalDate.now();
+        this.createdAtBook = LocalDateTime.now();
+        this.updateAtBook = LocalDateTime.now();
     }
 
     @PreUpdate
     public void updateBook() {
-        this.updateAtBook = LocalDate.now();
+        this.updateAtBook = LocalDateTime.now();
     }
 }
