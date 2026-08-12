@@ -2,10 +2,9 @@ package org.a1aska17.bookhub.entity;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import java.time.LocalDateTime;
-
 
 @Entity
 @Table(schema = "public", name="Books")
@@ -14,11 +13,21 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBook;
-    @NotNull
+
+    @NotBlank
     private String titleBook;
+
+    @NotBlank
     private String authorBook;
+
     private String descriptionBook;
-    private int publicationYearBook;
+
+    @NotNull
+    @Min(1)
+    @Max(2026)
+    @Max(2026)
+    private Integer publicationYearBook;
+
     private LocalDateTime createdAtBook;
     private boolean isRead;
     private LocalDateTime updateAtBook;
@@ -33,4 +42,5 @@ public class Book {
     public void updateBook() {
         this.updateAtBook = LocalDateTime.now();
     }
+
 }

@@ -1,6 +1,7 @@
 package org.a1aska17.bookhub.controller;
 
-import org.a1aska17.bookhub.dto.BookResponse;
+import org.a1aska17.bookhub.dto.CreateBookRequest;
+import org.a1aska17.bookhub.dto.UpdateBookRequest;
 import org.a1aska17.bookhub.entity.Book;
 import org.a1aska17.bookhub.service.BookService;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/books")
 public class BookController {
     private BookService bookService;
 
@@ -16,18 +17,23 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PostMapping("/addbook")
-    public Book addBook(@RequestBody BookResponse bookResponse) {
-       return bookService.addBook(bookResponse);
+    @PostMapping("/add")
+    public Book addBook(@RequestBody CreateBookRequest createBookRequest) {
+       return bookService.addBook(createBookRequest);
     }
 
-    @GetMapping("/infobook")
-    public Book infoBook(@RequestBody BookResponse bookResponse) {
-        return bookService.infoBookById(bookResponse);
+    @GetMapping("/{idBook}")
+    public Book infoBook(@PathVariable Long idBook) {
+        return bookService.infoBookById(idBook);
     }
 
-    @GetMapping("/listbooks")
+    @GetMapping
     public List<Book> printListBooks() {
         return bookService.printListBooks();
+    }
+
+    @PutMapping("/{idBook}")
+    public Book updateBook(@PathVariable Long idBook, @RequestBody UpdateBookRequest updateBookRequest) {
+        return bookService.updateBookById(idBook, updateBookRequest);
     }
 }

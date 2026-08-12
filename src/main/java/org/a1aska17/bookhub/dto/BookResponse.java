@@ -10,7 +10,7 @@ public class BookResponse {
     private String titleBook;
     private String authorBook;
     private String descriptionBook;
-    private int publicationYearBook;
+    private Integer publicationYearBook;
     private LocalDateTime createdAtBook;
     private boolean isRead;
     private LocalDateTime updateAtBook;
