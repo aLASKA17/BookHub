@@ -1,5 +1,6 @@
 package org.a1aska17.bookhub.controller;
 
+import lombok.Data;
 import org.a1aska17.bookhub.dto.CreateBookRequest;
 import org.a1aska17.bookhub.dto.UpdateBookRequest;
 import org.a1aska17.bookhub.entity.Book;
@@ -10,12 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/books")
+@Data
 public class BookController {
     private BookService bookService;
-
-    BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @PostMapping("/add")
     public Book addBook(@RequestBody CreateBookRequest createBookRequest) {
@@ -23,13 +21,13 @@ public class BookController {
     }
 
     @GetMapping("/{idBook}")
-    public Book infoBook(@PathVariable Long idBook) {
-        return bookService.infoBookById(idBook);
+    public Book findBook(@PathVariable Long idBook) {
+        return bookService.findBookById(idBook);
     }
 
     @GetMapping
-    public List<Book> printListBooks() {
-        return bookService.printListBooks();
+    public List<Book> findListBooks() {
+        return bookService.findListBooks();
     }
 
     @PutMapping("/{idBook}")

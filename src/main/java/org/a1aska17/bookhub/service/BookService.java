@@ -25,12 +25,12 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public Book infoBookById(Long idBook) {
+    public Book findBookById(Long idBook) {
         return bookRepository.findByIdBook(idBook).
                 orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
     }
 
-    public List<Book> printListBooks() {
+    public List<Book> findListBooks() {
         return bookRepository.findAll();
     }
 
