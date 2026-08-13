@@ -4,10 +4,11 @@ package org.a1aska17.bookhub.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Table(schema = "public", name="Books")
+@Table(schema = "public", name = "Books")
 @Data
 public class Book {
     @Id
@@ -25,7 +26,6 @@ public class Book {
     @NotNull
     @Min(1)
     @Max(2026)
-    @Max(2026)
     private Integer publicationYearBook;
 
     private LocalDateTime createdAtBook;
@@ -42,5 +42,4 @@ public class Book {
     public void updateBook() {
         this.updateAtBook = LocalDateTime.now();
     }
-
 }

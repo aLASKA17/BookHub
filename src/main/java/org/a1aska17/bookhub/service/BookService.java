@@ -32,14 +32,32 @@ public class BookService {
     public List<Book> printListBooks() {
         return bookRepository.findAll();
     }
-     // TODO исправить обновение не всех данных
+
     public Book updateBookById(Long idBook, UpdateBookRequest updateBookRequest) {
         Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new RuntimeException("Книга с id " + idBook + " не найдена"));
+
+        if (updateBookRequest.getAuthorBook() != null) {
+            book.setAuthorBook(updateBookRequest.getAuthorBook());
+        }
+
+        if (updateBookRequest.getDescriptionBook() != null) {
+            book.setDescriptionBook(updateBookRequest.getDescriptionBook());
+        }
+
+        if (updateBookRequest.getPublicationYearBook() != 0) {
+            book.setPublicationYearBook(updateBookRequest.getPublicationYearBook());
+        }
+
+        if (updateBookRequest.getTitleBook() != null) {
+            book.setTitleBook(updateBookRequest.getTitleBook());
+        }
+
         book.setRead(updateBookRequest.isRead());
-        book.setDescriptionBook(updateBookRequest.getDescriptionBook());
-        book.setPublicationYearBook(updateBookRequest.getPublicationYearBook());
-        book.setAuthorBook(updateBookRequest.getAuthorBook());
-        book.setTitleBook(updateBookRequest.getTitleBook());
         return bookRepository.save(book);
+    }
+
+    public void deleteBookById(Long idBook) {
+        Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new RuntimeException("Книга с id " + idBook + " не найдена"));
+        bookRepository.delete(book);
     }
 }
