@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.a1aska17.bookhub.dto.CreateBookRequest;
 import org.a1aska17.bookhub.dto.UpdateBookRequest;
 import org.a1aska17.bookhub.entity.Book;
+import org.a1aska17.bookhub.exception.BookNotFoundException;
 import org.a1aska17.bookhub.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class BookService {
 
     public Book infoBookById(Long idBook) {
         return bookRepository.findByIdBook(idBook).
-                orElseThrow(() -> new RuntimeException("Книга не найдена!"));
+                orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
     }
 
     public List<Book> printListBooks() {
@@ -34,7 +35,7 @@ public class BookService {
     }
 
     public Book updateBookById(Long idBook, UpdateBookRequest updateBookRequest) {
-        Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new RuntimeException("Книга с id " + idBook + " не найдена"));
+        Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
 
         if (updateBookRequest.getAuthorBook() != null) {
             book.setAuthorBook(updateBookRequest.getAuthorBook());
@@ -57,7 +58,7 @@ public class BookService {
     }
 
     public void deleteBookById(Long idBook) {
-        Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new RuntimeException("Книга с id " + idBook + " не найдена"));
+        Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
         bookRepository.delete(book);
     }
 }
