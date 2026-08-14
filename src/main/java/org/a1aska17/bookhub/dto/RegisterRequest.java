@@ -8,7 +8,7 @@ public class RegisterRequest {
     @NotBlank
     private String userName;
     @NotBlank
-    private String emailUser;
+    private String userEmail;
     @NotBlank
-    private String passwordUser;
+    private String userPassword;
 }

@@ -1,45 +1,56 @@
 package org.a1aska17.bookhub.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
-@Table(schema = "public", name = "Books")
+@Table(schema = "public", name = "books")
 @Data
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idBook;
+    private Long bookId;
 
     @NotBlank
-    private String titleBook;
+    @Column(name = "book_title", nullable = false)
+    private String bookTitle;
 
     @NotBlank
-    private String authorBook;
+    @Column(name = "book_author", nullable = false)
+    private String bookAuthor;
 
-    private String descriptionBook;
+    @Column(name = "book_description", nullable = false)
+    private String bookDescription;
 
     @NotNull
     @Min(1)
     @Max(2026)
-    private Integer publicationYearBook;
+    @Column(name = "book_publication_year", nullable = false)
+    private Integer bookPublicationYear;
 
-    private LocalDateTime createdAtBook;
-    private boolean isRead;
-    private LocalDateTime updateAtBook;
+    @Column(name = "book_created_at")
+    private LocalDateTime bookCreatedAt;
+
+    @Column(name = "book_is_read")
+    private boolean bookIsRead;
+
+    @Column(name = "book_update_at")
+    private LocalDateTime bookUpdateAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+    private User owner;
 
     @PrePersist
     public void addBook() {
-        this.createdAtBook = LocalDateTime.now();
-        this.updateAtBook = LocalDateTime.now();
+        this.bookCreatedAt = LocalDateTime.now();
+        this.bookUpdateAt = LocalDateTime.now();
     }
 
     @PreUpdate
     public void updateBook() {
-        this.updateAtBook = LocalDateTime.now();
+        this.bookUpdateAt = LocalDateTime.now();
     }
 }

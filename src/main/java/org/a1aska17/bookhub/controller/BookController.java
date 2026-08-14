@@ -21,8 +21,8 @@ public class BookController {
     }
 
     @GetMapping("/{idBook}")
-    public Book findBook(@PathVariable Long idBook) {
-        return bookService.findBookById(idBook);
+    public Book findBook(@PathVariable Long bookId) {
+        return bookService.findBookById(bookId);
     }
 
     @GetMapping
@@ -31,12 +31,12 @@ public class BookController {
     }
 
     @PutMapping("/{idBook}")
-    public Book updateBook(@PathVariable Long idBook, @RequestBody UpdateBookRequest updateBookRequest) {
-        return bookService.updateBookById(idBook, updateBookRequest);
+    public Book updateBook(@PathVariable Long bookId, @RequestBody UpdateBookRequest updateBookRequest) {
+        return bookService.updateBookById(bookId, updateBookRequest);
     }
 
     @DeleteMapping("/{idBook}")
-    public void deleteBook(@PathVariable Long idBook) {
-        bookService.deleteBookById(idBook);
+    public void deleteBook(@PathVariable Long bookId) {
+        bookService.deleteBookById(bookId);
     }
 }

@@ -3,12 +3,12 @@
 --changeset a1aska17:1
 
 CREATE TABLE books (
-                       id_book BIGSERIAL PRIMARY KEY,
-                       title_book VARCHAR(255) NOT NULL,
-                       author_book VARCHAR(255) NOT NULL,
-                       description_book TEXT,
-                       publication_year_book INTEGER,
-                       is_read BOOLEAN NOT NULL DEFAULT FALSE,
-                       created_at_book TIMESTAMP NOT NULL,
-                       update_at_book TIMESTAMP
+                       book_id BIGSERIAL PRIMARY KEY,
+                       book_title VARCHAR(255) NOT NULL,
+                       book_author VARCHAR(255) NOT NULL,
+                       book_description TEXT,
+                       book_publication_year INTEGER,
+                       book_is_read BOOLEAN NOT NULL DEFAULT FALSE,
+                       book_created_at TIMESTAMP NOT NULL,
+                       book_update_at TIMESTAMP
 );

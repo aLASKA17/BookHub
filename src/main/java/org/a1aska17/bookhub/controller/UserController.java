@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/add")
-    public User addUser(@RequestBody RegisterRequest registerRequest) {
-        return userService.addUser(registerRequest);
+    @PostMapping("/register")
+    public User registerUser(@RequestBody RegisterRequest registerRequest) {
+        return userService.registerUser(registerRequest);
     }
 
     @GetMapping("/{idUser}")
-    public User findUser(@PathVariable Long idUser) {
-        return userService.findUserById(idUser);
+    public User findUser(@PathVariable Long userId) {
+        return userService.findUserById(userId);
     }
 }

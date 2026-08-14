@@ -17,16 +17,16 @@ public class BookService {
 
     public Book addBook(CreateBookRequest createBookRequest) {
         Book book = new Book();
-        book.setTitleBook(createBookRequest.getTitleBook());
-        book.setAuthorBook(createBookRequest.getAuthorBook());
-        book.setPublicationYearBook(createBookRequest.getPublicationYearBook());
-        book.setDescriptionBook(createBookRequest.getDescriptionBook());
-        book.setRead(false);
+        book.setBookTitle(createBookRequest.getBookTitle());
+        book.setBookAuthor(createBookRequest.getBookAuthor());
+        book.setBookPublicationYear(createBookRequest.getBookPublicationYear());
+        book.setBookDescription(createBookRequest.getBookDescription());
+        book.setBookIsRead(false);
         return bookRepository.save(book);
     }
 
     public Book findBookById(Long idBook) {
-        return bookRepository.findByIdBook(idBook).
+        return bookRepository.findByBookId(idBook).
                 orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
     }
 
@@ -35,30 +35,30 @@ public class BookService {
     }
 
     public Book updateBookById(Long idBook, UpdateBookRequest updateBookRequest) {
-        Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
+        Book book = bookRepository.findByBookId(idBook).orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
 
-        if (updateBookRequest.getAuthorBook() != null) {
-            book.setAuthorBook(updateBookRequest.getAuthorBook());
+        if (updateBookRequest.getBookAuthor() != null) {
+            book.setBookAuthor(updateBookRequest.getBookAuthor());
         }
 
-        if (updateBookRequest.getDescriptionBook() != null) {
-            book.setDescriptionBook(updateBookRequest.getDescriptionBook());
+        if (updateBookRequest.getBookDescription() != null) {
+            book.setBookDescription(updateBookRequest.getBookDescription());
         }
 
-        if (updateBookRequest.getPublicationYearBook() != 0) {
-            book.setPublicationYearBook(updateBookRequest.getPublicationYearBook());
+        if (updateBookRequest.getBookPublicationYear() != 0) {
+            book.setBookPublicationYear(updateBookRequest.getBookPublicationYear());
         }
 
-        if (updateBookRequest.getTitleBook() != null) {
-            book.setTitleBook(updateBookRequest.getTitleBook());
+        if (updateBookRequest.getBookTitle() != null) {
+            book.setBookTitle(updateBookRequest.getBookTitle());
         }
 
-        book.setRead(updateBookRequest.isRead());
+        book.setBookIsRead(updateBookRequest.isBookIsRead());
         return bookRepository.save(book);
     }
 
     public void deleteBookById(Long idBook) {
-        Book book = bookRepository.findByIdBook(idBook).orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
+        Book book = bookRepository.findByBookId(idBook).orElseThrow(() -> new BookNotFoundException("Книга с id " + idBook + " не найдена"));
         bookRepository.delete(book);
     }
 }

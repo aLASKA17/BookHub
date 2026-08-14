@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class UpdateBookRequest {
-    private String titleBook;
-    private String authorBook;
-    private String descriptionBook;
-    private int publicationYearBook;
-    private boolean isRead;
+    private String bookTitle;
+    private String bookAuthor;
+    private String bookDescription;
+    private int bookPublicationYear;
+    private boolean bookIsRead;
 }

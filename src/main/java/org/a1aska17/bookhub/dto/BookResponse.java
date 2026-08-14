@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 
 @Data
 public class BookResponse {
-    private Long idBook;
-    private String titleBook;
-    private String authorBook;
-    private String descriptionBook;
-    private Integer publicationYearBook;
-    private LocalDateTime createdAtBook;
-    private boolean isRead;
-    private LocalDateTime updateAtBook;
+    private Long bookId;
+    private String bookTitle;
+    private String bookAuthor;
+    private String bookDescription;
+    private Integer bookPublicationYear;
+    private LocalDateTime bookCreatedAt;
+    private boolean bookIsRead;
+    private LocalDateTime bookUpdateAt;
 }

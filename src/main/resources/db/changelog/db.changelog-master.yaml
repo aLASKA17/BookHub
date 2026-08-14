@@ -1,6 +1,19 @@
 databaseChangeLog:
+
+  - include:
+      file: db/changelog/003-create-roles-table.sql
+
+  - include:
+      file: db/changelog/002-create-users-table.sql
+
   - include:
       file: db/changelog/001-create-books-table.sql
 
   - include:
-      file: db/changelog/002-create-users-table.sql
+      file: db/changelog/005-add-book-owner.sql
+
+  - include:
+      file: db/changelog/006-insert-default-roles.sql
+
+  - include:
+      file: db/changelog/004-create-users_roles-table.sql
