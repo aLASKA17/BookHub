@@ -1,4 +1,4 @@
-package org.a1aska17.bookhub.dto;
+package org.a1aska17.bookhub.dto.book;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

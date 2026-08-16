@@ -1,8 +1,7 @@
-package org.a1aska17.bookhub.dto;
+package org.a1aska17.bookhub.dto.error;
 
 import lombok.Getter;
 import java.time.LocalDateTime;
-
 
 @Getter
 public class ErrorResponse {

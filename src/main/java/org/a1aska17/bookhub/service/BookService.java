@@ -1,8 +1,8 @@
 package org.a1aska17.bookhub.service;
 
 import lombok.RequiredArgsConstructor;
-import org.a1aska17.bookhub.dto.CreateBookRequest;
-import org.a1aska17.bookhub.dto.UpdateBookRequest;
+import org.a1aska17.bookhub.dto.book.CreateBookRequest;
+import org.a1aska17.bookhub.dto.book.UpdateBookRequest;
 import org.a1aska17.bookhub.entity.Book;
 import org.a1aska17.bookhub.exception.BookNotFoundException;
 import org.a1aska17.bookhub.repository.BookRepository;

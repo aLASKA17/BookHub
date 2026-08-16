@@ -1,8 +1,8 @@
 package org.a1aska17.bookhub.controller;
 
 import lombok.Data;
-import org.a1aska17.bookhub.dto.CreateBookRequest;
-import org.a1aska17.bookhub.dto.UpdateBookRequest;
+import org.a1aska17.bookhub.dto.book.CreateBookRequest;
+import org.a1aska17.bookhub.dto.book.UpdateBookRequest;
 import org.a1aska17.bookhub.entity.Book;
 import org.a1aska17.bookhub.service.BookService;
 import org.springframework.web.bind.annotation.*;

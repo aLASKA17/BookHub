@@ -1,7 +1,7 @@
 package org.a1aska17.bookhub.controller;
 
-import org.a1aska17.bookhub.dto.AppInfoDto;
-import org.a1aska17.bookhub.dto.AppMessageDto;
+import org.a1aska17.bookhub.dto.any.AppInfoDto;
+import org.a1aska17.bookhub.dto.any.AppMessageDto;
 import org.a1aska17.bookhub.service.HelloService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

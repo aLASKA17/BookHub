@@ -1,7 +1,7 @@
 package org.a1aska17.bookhub.service;
 
-import org.a1aska17.bookhub.dto.AppInfoDto;
-import org.a1aska17.bookhub.dto.AppMessageDto;
+import org.a1aska17.bookhub.dto.any.AppInfoDto;
+import org.a1aska17.bookhub.dto.any.AppMessageDto;
 import org.springframework.stereotype.Service;
 
 @Service
